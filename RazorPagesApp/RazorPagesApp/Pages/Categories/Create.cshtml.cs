@@ -23,10 +23,15 @@ namespace RazorPagesApp.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
-            await _db.Category.AddAsync(Category);
-            await _db.SaveChangesAsync();
+            if (ModelState.IsValid)
+            {
+                await _db.Category.AddAsync(Category);
+                await _db.SaveChangesAsync();
 
-            return RedirectToPage("Index");
+                return RedirectToPage("Index");
+            }
+
+            return Page();
         }
     }
 }
