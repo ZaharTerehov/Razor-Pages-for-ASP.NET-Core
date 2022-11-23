@@ -23,6 +23,10 @@ namespace RazorPagesApp.Pages.Categories
 
         public async Task<IActionResult> OnPost()
         {
+            if(Category.Name == Category.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("Category.Name", "The Display cannot exactly math the Name.");
+            }
             if (ModelState.IsValid)
             {
                 await _db.Category.AddAsync(Category);

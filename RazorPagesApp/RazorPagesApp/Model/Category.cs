@@ -10,6 +10,7 @@ namespace RazorPagesApp.Model
 		[Required(ErrorMessage = "Enter your name!")]
 		[StringLength(30, MinimumLength = 3, ErrorMessage = "It is very short name!")]
 		public string Name { get; set; }
+		[Display(Name="Display Order")]
 
 		public int DisplayOrder { get; set; }
 	}
